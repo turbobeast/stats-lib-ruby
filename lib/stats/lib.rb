@@ -27,7 +27,7 @@ module Stats
     def standard_deviation(*set)
       Stats::Utils.pipe(
         ->(*s) { Stats::Lib.variance(*s) },
-        ->(s) { Math.sqrt(*s) }
+        ->(s) { Math.sqrt(s) }
       ).call(*set)
     end
 
