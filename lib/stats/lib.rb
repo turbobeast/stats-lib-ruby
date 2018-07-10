@@ -18,12 +18,19 @@ module Stats
 
     def variance(*set)
       Stats::Utils.pipe(
-        ->(s) { Stats::Lib.dists_from_mean(*s) },
+        ->(*s) { Stats::Lib.dists_from_mean(*s) },
         ->(s) { Stats::Utils.squares(*s) },
         ->(s) { Stats::Lib.mean(*s) }
       ).call(*set)
     end
 
-    module_function :mean, :dists_from_mean, :dists, :variance
+    def standard_deviation(*set)
+      Stats::Utils.pipe(
+        ->(*s) { Stats::Lib.variance(*s) },
+        ->(s) { Math.sqrt(*s) }
+      ).call(*set)
+    end
+
+    module_function :mean, :dists_from_mean, :dists, :variance, :standard_deviation
   end
 end

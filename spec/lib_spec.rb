@@ -15,15 +15,14 @@ RSpec.describe Stats::Lib do
   end
   context 'variance' do
     it 'returns correct variance' do
-      expect(Stats::Lib.variance([8, 9, 10, 11, 12])).to eq 2
-      expect(Stats::Lib.variance([-10, 0, 10, 20, 30])).to eq 200
+      expect(Stats::Lib.variance(8, 9, 10, 11, 12)).to eq 2
+      expect(Stats::Lib.variance(-10, 0, 10, 20, 30)).to eq 200
+    end
+  end
+  context 'standard_deviation' do
+    it 'returns standard deviation' do
+      expect(Stats::Lib.standard_deviation(-10, 0, 10, 20, 30)).to eq Math.sqrt 200
+      expect(Stats::Lib.standard_deviation(8, 9, 10, 11, 12)).to eq Math.sqrt 2
     end
   end
 end
-
-# context "pipe" do
-#     it "returns a function" do
-#       cheep = Stats::Utils.pipe(lambda { |a| a * 2 }, lambda { |a| a * 4 }).call(10)
-#       expect(cheep).to eq 80
-#     end
-#   end
