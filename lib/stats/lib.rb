@@ -4,14 +4,12 @@ require 'stats/utils'
 module Stats
   # Statistics functions
   module Lib
-    # Your code goes here...
     def dists(standard_mean)
       ->(*set) do set.map { |a| a - standard_mean } end
     end
 
     def mean(*set)
-      bbb = set.reduce { |a, b| a + b }
-      bbb / set.count
+      set.reduce { |a, b| a + b } / set.count
     end
 
     def dists_from_mean(*set)
