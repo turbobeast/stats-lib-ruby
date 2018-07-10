@@ -42,6 +42,15 @@ module Stats
       ->(ray) do ray.map { |inner| yield(*inner) } end
     end
 
-    module_function :pipe, :sub, :popshift, :swap, :squares, :half, :two_chunks, :map_two_d_array_with
+    module_function(
+      :pipe,
+      :sub,
+      :popshift,
+      :swap,
+      :squares,
+      :half,
+      :two_chunks,
+      :map_two_d_array_with
+    )
   end
 end
