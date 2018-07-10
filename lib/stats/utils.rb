@@ -2,7 +2,9 @@ module Stats
   # Statistics functions
   module Utils
     def pipe(*fns)
-      recurse = ->(*vals) do fns.count != 0 ? recurse.call(fns.shift.call(*vals)) : vals[0] end
+      recurse = lambda { |*vals|
+        fns.count != 0 ? recurse.call(fns.shift.call(*vals)) : vals[0]
+      }
     end
 
     def sub(a, b)
