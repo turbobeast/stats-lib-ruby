@@ -13,6 +13,12 @@ RSpec.describe Stats::Lib do
       expect(Stats::Lib.dists_from_mean(*set)).to eq [-4, -3, -1, 1, 3, 6]
     end
   end
+  context 'variance' do
+    it 'returns correct variance' do
+      expect(Stats::Lib.variance([8, 9, 10, 11, 12])).to eq 2
+      expect(Stats::Lib.variance([-10, 0, 10, 20, 30])).to eq 200
+    end
+  end
 end
 
 # context "pipe" do
